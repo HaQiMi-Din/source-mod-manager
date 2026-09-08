@@ -115,6 +115,8 @@ source-mod-manager/
 
 **启动没反应？** 请确认 Steam 已在运行，且对应游戏（HL2 / GMod / CS:S）已安装。
 
+**Linux 版运行报 glibc 版本错误？** 云编译的 Linux 可执行文件基于 Ubuntu 24.04 构建，要求系统 glibc ≥ 2.38（Ubuntu 24.04+ / Debian 13+ 等新发行版可用）。旧系统请改用 Python 源码运行（`pip install -e .` 或 `PYTHONPATH=src python -m source_mod_manager ...`）。Windows 版无此限制。
+
 ## 许可证
 
 MIT License。仅供学习与个人使用，与 Valve 无关；Half-Life 2、Garry's Mod、Counter-Strike: Source 均为其各自权利人的商标。
