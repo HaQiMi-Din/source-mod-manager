@@ -125,9 +125,10 @@ jobs:
       - name: 安装 PyInstaller
         run: |
           /opt/homebrew/opt/python@3.11/bin/python3.11 -m pip install pyinstaller
-      - name: 编译 GUI 版
+      - name: 编译 GUI 版（.app 打包为 zip）
         run: |
           /opt/homebrew/opt/python@3.11/bin/python3.11 -m PyInstaller --noconfirm --clean --paths src --onefile --windowed --name SourceModManagerGUI-macos run_gui.py
+          cd dist && zip -q -r SourceModManagerGUI-macos.zip SourceModManagerGUI-macos.app && rm -rf SourceModManagerGUI-macos.app
       - name: 编译 CLI 版
         run: |
           /opt/homebrew/opt/python@3.11/bin/python3.11 -m PyInstaller --noconfirm --clean --paths src --onefile --name SourceModManagerCLI-macos run_cli.py
