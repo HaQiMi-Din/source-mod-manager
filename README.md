@@ -87,8 +87,17 @@ source-mod-manager [--steam <Steam路径>] <子命令>
 每次推送到 `main`（或打 `v*` 标签）都会自动：
 
 1. 在 Ubuntu 上运行全部单元测试；
-2. 在 Windows / Ubuntu 上分别用 PyInstaller **云编译**出 `SourceModManagerGUI` 与 `SourceModManagerCLI` 并上传构建产物；
-3. 推送形如 `v1.0.0` 的标签时，自动创建 GitHub Release 并附带编译好的程序。
+2. 在 **5 个平台/架构**上分别用 PyInstaller **云编译**出 `SourceModManagerGUI` 与 `SourceModManagerCLI` 并上传构建产物：
+
+| 平台 | 架构 | 产物示例 |
+| --- | --- | --- |
+| Windows | x64 | `SourceModManagerCLI.exe` |
+| Windows | **ARM64**（Windows on ARM 原生） | `SourceModManagerCLI-arm64.exe` |
+| Linux | x64 | `SourceModManagerCLI` |
+| Linux | **ARM64**（树莓派 / ARM 服务器等） | `SourceModManagerCLI-arm64` |
+| macOS | **ARM64**（Apple Silicon M 系列） | `SourceModManagerCLI-macos` |
+
+3. 推送形如 `v1.0.0` 的标签时，自动创建 GitHub Release 并附带全部编译好的程序。
 
 ## 项目结构
 
@@ -116,6 +125,10 @@ source-mod-manager/
 **启动没反应？** 请确认 Steam 已在运行，且对应游戏（HL2 / GMod / CS:S）已安装。
 
 **Linux 版运行报 glibc 版本错误？** 云编译的 Linux 可执行文件基于 Ubuntu 24.04 构建，要求系统 glibc ≥ 2.38（Ubuntu 24.04+ / Debian 13+ 等新发行版可用）。旧系统请改用 Python 源码运行（`pip install -e .` 或 `PYTHONPATH=src python -m source_mod_manager ...`）。Windows 版无此限制。
+
+**Windows on ARM（骁龙/麒麟等 ARM 设备）？** 推荐直接使用 `-arm64.exe` 原生版本；若误用 x64 版也会被 Windows 以模拟方式兼容运行。
+
+**macOS 打开提示"无法验证开发者"？** 程序未签名，请在 Finder 中右键（或按住 Control 点击）程序 → 打开，确认一次即可。
 
 ## 许可证
 
