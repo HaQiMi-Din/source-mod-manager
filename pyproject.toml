@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "source-mod-manager"
+version = "1.0.0"
+description = "起源引擎(Source Engine)模组解析与启动管理器：扫描/校验/运行 HL2、GMod、CS:S 模组与地图"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["source-engine", "half-life-2", "garrysmod", "counter-strike", "mod-manager"]
+
+[project.urls]
+Repository = "https://github.com/HaQiMi-Din/source-mod-manager"
+
+[tool.setuptools.packages.find]
+where = ["src"]

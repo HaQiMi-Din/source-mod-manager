@@ -1,0 +1,3 @@
+# 运行时零第三方依赖（仅 Python 标准库 + Tkinter）。
+# 构建可执行文件（本地或 CI 云编译）时：
+#   pip install pyinstaller
